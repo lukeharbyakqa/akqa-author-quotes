@@ -1,0 +1,14 @@
+*,
+:after,
+:before {
+  box-sizing: inherit;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
