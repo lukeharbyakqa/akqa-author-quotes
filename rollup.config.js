@@ -4,6 +4,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 import css from "rollup-plugin-css-only";
+import image from "@rollup/plugin-image";
 import preprocess from "svelte-preprocess";
 import { config } from "dotenv";
 import replace from "@rollup/plugin-replace";
@@ -55,11 +56,18 @@ export default {
         dev: !production,
       },
       preprocess: preprocess(),
+      // preprocess: preprocess({
+      //   scss: {
+      //     prependData: `@import './src/scss/main.scss';`,
+      //   },
+      // }),
     }),
     // we'll extract any component CSS out into
     // a separate file - better for performance
     css({ output: "bundle.css" }),
 
+    // import image handling
+    image(),
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
     // some cases you'll need additional configuration -

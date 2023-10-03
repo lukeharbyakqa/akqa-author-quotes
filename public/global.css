@@ -12,19 +12,18 @@ body {
   box-sizing: border-box;
   font-family: AGaramondPro, Adobe Garamond Pro, garamond, Times, serif;
   background-color: #e5e7eb;
+  font-size: 1.2rem;
 }
 
 a {
+  transition: all 200ms ease-in;
   color: rgb(0, 100, 200);
   text-decoration: none;
 }
 
 a:hover {
+  transition: all 200ms ease-in;
   text-decoration: underline;
-}
-
-a:visited {
-  color: rgb(0, 80, 160);
 }
 
 label {

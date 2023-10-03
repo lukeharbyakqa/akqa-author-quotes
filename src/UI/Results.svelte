@@ -1,4 +1,5 @@
 <script>
+    import externalLink from '../lib/images/external-link.svg'
     export let authorName;
     export let authorDescription;
     export let authorLink;
@@ -14,8 +15,12 @@
 
         a {
             display: inline-block;
-            color: $red;
+            color: $colour__red;
             text-decoration: none;
+
+            &:hover {
+                color: darken($colour__red, 10);
+            }
         }
     }
 
@@ -33,7 +38,7 @@
     <p>{authorDescription}</p>
     <a href={authorLink} target="_blank">
         Wikipedia entry 
-        <img src="https://www.svgrepo.com/show/342587/external-link.svg" alt="" />
+        <img src={externalLink} alt="" />
     </a>
     <p>{authorCount} {authorCount === 1 ? `quote` : `quotes`}</p>
 </li>

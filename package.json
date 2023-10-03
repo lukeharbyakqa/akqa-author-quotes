@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-image": "^3.0.2",
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@rollup/plugin-replace": "^5.0.2",
     "dotenv": "^16.3.1",
