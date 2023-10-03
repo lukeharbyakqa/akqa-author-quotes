@@ -976,11 +976,11 @@ var app = (function () {
     			t5 = text(" results");
     			attr_dev(button, "title", "Reset");
     			attr_dev(button, "class", "svelte-1to8v9r");
-    			add_location(button, file, 118, 16, 2636);
-    			add_location(li0, file, 118, 12, 2632);
+    			add_location(button, file, 118, 16, 2623);
+    			add_location(li0, file, 118, 12, 2619);
     			attr_dev(span, "class", "results-total svelte-1to8v9r");
-    			add_location(span, file, 127, 25, 3026);
-    			add_location(li1, file, 127, 12, 3013);
+    			add_location(span, file, 127, 25, 3013);
+    			add_location(li1, file, 127, 12, 3000);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li0, anchor);
@@ -1136,7 +1136,7 @@ var app = (function () {
     			t0 = text("Sorry no results for ");
     			t1 = text(/*value*/ ctx[1]);
     			attr_dev(p, "class", "fade-in");
-    			add_location(p, file, 131, 8, 3169);
+    			add_location(p, file, 131, 8, 3156);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1208,15 +1208,15 @@ var app = (function () {
     			if (if_block0) if_block0.c();
     			t5 = space();
     			if (if_block1) if_block1.c();
-    			add_location(strong, file, 105, 7, 2155);
-    			add_location(p0, file, 105, 4, 2152);
-    			add_location(p1, file, 107, 8, 2246);
+    			add_location(strong, file, 105, 7, 2142);
+    			add_location(p0, file, 105, 4, 2139);
+    			add_location(p1, file, 107, 8, 2233);
     			attr_dev(div0, "class", "inner__wrapper svelte-1to8v9r");
-    			add_location(div0, file, 106, 4, 2209);
+    			add_location(div0, file, 106, 4, 2196);
     			attr_dev(ul, "class", ul_class_value = "" + (null_to_empty(/*results*/ ctx[0].length ? `fade-in` : ``) + " svelte-1to8v9r"));
-    			add_location(ul, file, 116, 4, 2546);
+    			add_location(ul, file, 116, 4, 2533);
     			attr_dev(div1, "class", "inner svelte-1to8v9r");
-    			add_location(div1, file, 104, 0, 2128);
+    			add_location(div1, file, 104, 0, 2115);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1337,7 +1337,7 @@ var app = (function () {
     		if (value.length < 3) {
     			return;
     		} else if (event.which === 13) {
-    			fetch(`${url}${event.target.value}`).then(data => {
+    			fetch(`${url}${value}`).then(data => {
     				return data.json();
     			}).then(data => {
     				$$invalidate(2, success = true);

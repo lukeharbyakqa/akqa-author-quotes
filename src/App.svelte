@@ -15,7 +15,7 @@
         if (value.length < 3) {
             return
         } else if (event.which === 13) {
-            fetch(`${url}${event.target.value}`)
+            fetch(`${url}${value}`)
                 .then(data => {
                     return data.json();
                 })
