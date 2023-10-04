@@ -1,4 +1,4 @@
-<script>
+<script>    
     export let name = "";
     export let placeholder = "";
 </script>

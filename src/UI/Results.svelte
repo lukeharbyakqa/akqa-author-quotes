@@ -1,9 +1,19 @@
 <script>
+    import { createEventDispatcher } from "svelte";
     import externalLink from '../lib/images/external-link.svg'
+    
     export let authorName;
     export let authorDescription;
     export let authorLink;
     export let authorCount;
+
+    const dispatch = createEventDispatcher();
+
+    function authorEvent(event) {
+        event.preventDefault();
+        dispatch('authorEvent');
+        console.log('authorEvent', event.type);
+    }
 </script>
 
 <style lang="scss">
@@ -40,5 +50,12 @@
         Wikipedia entry 
         <img src={externalLink} alt="" />
     </a>
-    <p>{authorCount} {authorCount === 1 ? `quote` : `quotes`}</p>
+    <p>
+        {authorCount}
+        {#if authorCount === 0} 
+            quotes
+        {:else}
+            <a href="/" on:click={(event) => authorEvent(event)}>quote{authorCount === 1 ? `` : `s`}</a>
+        {/if}
+    </p>
 </li>

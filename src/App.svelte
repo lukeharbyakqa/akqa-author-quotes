@@ -40,6 +40,7 @@
     let handleBlur = () => {
         placeholder = "For example 'Emily Dickinson'. Then hit enter";
     }
+
 </script>
 
 <style lang="scss">
@@ -137,6 +138,6 @@
         {/if}
     </ul>
     {#if value && success && !results.length}
-        <p class="fade-in">Sorry no results for {value}</p>
+        <p>Sorry no results for {value}</p>
     {/if}
 </div>
