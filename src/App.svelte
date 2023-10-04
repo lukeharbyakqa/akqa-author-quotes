@@ -86,7 +86,6 @@
     }
 
     .results-total {
-        font-weight: bold;
         color: $colour__red;
     }
 
@@ -101,12 +100,12 @@
         border-radius: 50%;
         width: 2rem;
         height: 2rem;
-        background-color: $colour__grey-mid;
+        background-color: darken($colour__silver, 18);
         color: $colour__white;
 
         &:hover {
             transition: all 200ms ease-in;
-            background-color: darken($colour__grey-mid, 5);
+            background-color: darken($colour__silver, 16);
         }
     }
 </style>

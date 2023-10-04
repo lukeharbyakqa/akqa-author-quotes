@@ -21,16 +21,30 @@
 
     li {
         margin-bottom: 1rem;
-        line-height: 1.2;
+        line-height: 1.25;
 
         a {
             display: inline-block;
             color: $colour__red;
             text-decoration: none;
+            border-bottom: 1px solid $colour__red;
 
             &:hover {
                 color: darken($colour__red, 10);
+                border-bottom: 1px solid transparent;
+                text-decoration: none;
             }
+        }
+    }
+
+    .wiki {
+        color: darken($colour__silver, 40);
+        text-decoration: none;
+        border-bottom: none;
+
+        &:hover {
+            color: darken($colour__silver, 44);
+            border-bottom: none;
         }
     }
 
@@ -46,10 +60,6 @@
 <li>
     <p>{authorName}</p>
     <p>{authorDescription}</p>
-    <a href={authorLink} target="_blank">
-        Wikipedia entry 
-        <img src={externalLink} alt="" />
-    </a>
     <p>
         {authorCount}
         {#if authorCount === 0} 
@@ -58,4 +68,8 @@
             <a href="/" on:click={(event) => authorEvent(event)}>quote{authorCount === 1 ? `` : `s`}</a>
         {/if}
     </p>
+    <a href={authorLink} target="_blank" class="wiki">
+        Wikipedia entry 
+        <img src={externalLink} alt="" />
+    </a>
 </li>
