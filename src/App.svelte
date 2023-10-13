@@ -1,9 +1,9 @@
 <script>
     import TextInput from "./UI/TextInput.svelte";
+    import Button from "./UI/Button.svelte";
     import Results from "./UI/Results.svelte";
 
-    // const apiURL = __app["env"]["API_URL"];
-    const apiURL = __app.env.API_URL;
+    const apiURL = __app["env"]["PUBLIC_API_URL"];
     let results = [];
     let value;
     let success = false;
@@ -72,6 +72,10 @@
         }
     }
 
+    h2 {
+        margin-top: 0;
+    }
+
     ul {
         transition: opacity 200ms ease-in;
         position: relative;
@@ -112,7 +116,7 @@
 </style>
 
 <div class="inner">
-    <p><strong>Search for quotes by authors</strong></p>
+    <h2>Search for quotes by authors</h2>
     <div class="inner__wrapper">
         <p>Enter an author's name</p>
         <TextInput
@@ -121,6 +125,10 @@
             on:blur={(event) => handleBlur(event)} 
             name={value}
             placeholder={placeholder}
+        />
+        <Button
+            name={'Submit'}
+            disabled={value && value.length >= 2 ? false : true}
         />
     </div>
     <ul class={results.length ? `fade-in` : ``}>
