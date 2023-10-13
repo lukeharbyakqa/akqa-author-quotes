@@ -2,7 +2,8 @@
     import TextInput from "./UI/TextInput.svelte";
     import Results from "./UI/Results.svelte";
 
-    const apiURL = __app["env"]["API_URL"];
+    // const apiURL = __app["env"]["API_URL"];
+    const apiURL = __app.env.API_URL;
     let results = [];
     let value;
     let success = false;

@@ -15,6 +15,8 @@ Copy the env.example file and populate it with your variables. Currently we only
 - Svelte
 - SASS
 
+Use node ^12
+
 ## Run the FE
 
 This Svelte instance uses [rollup config](https://rollupjs.org/).

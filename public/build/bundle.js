@@ -1083,7 +1083,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (118:8) {#if results.length}
+    // (119:8) {#if results.length}
     function create_if_block_1(ctx) {
     	let li0;
     	let button;
@@ -1130,11 +1130,11 @@ var app = (function () {
     			t5 = text(" results");
     			attr_dev(button, "title", "Reset");
     			attr_dev(button, "class", "svelte-14gdztp");
-    			add_location(button, file, 118, 16, 2603);
-    			add_location(li0, file, 118, 12, 2599);
+    			add_location(button, file, 119, 16, 2644);
+    			add_location(li0, file, 119, 12, 2640);
     			attr_dev(span, "class", "results-total svelte-14gdztp");
-    			add_location(span, file, 127, 25, 2993);
-    			add_location(li1, file, 127, 12, 2980);
+    			add_location(span, file, 128, 25, 3034);
+    			add_location(li1, file, 128, 12, 3021);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li0, anchor);
@@ -1207,14 +1207,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(118:8) {#if results.length}",
+    		source: "(119:8) {#if results.length}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (120:12) {#each results as item (item._id)}
+    // (121:12) {#each results as item (item._id)}
     function create_each_block(key_1, ctx) {
     	let first;
     	let results_1;
@@ -1271,14 +1271,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(120:12) {#each results as item (item._id)}",
+    		source: "(121:12) {#each results as item (item._id)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (131:4) {#if value && success && !results.length}
+    // (132:4) {#if value && success && !results.length}
     function create_if_block(ctx) {
     	let p;
     	let t0;
@@ -1289,7 +1289,7 @@ var app = (function () {
     			p = element("p");
     			t0 = text("Sorry no results for ");
     			t1 = text(/*value*/ ctx[1]);
-    			add_location(p, file, 131, 8, 3136);
+    			add_location(p, file, 132, 8, 3177);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1308,7 +1308,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(131:4) {#if value && success && !results.length}",
+    		source: "(132:4) {#if value && success && !results.length}",
     		ctx
     	});
 
@@ -1361,15 +1361,15 @@ var app = (function () {
     			if (if_block0) if_block0.c();
     			t5 = space();
     			if (if_block1) if_block1.c();
-    			add_location(strong, file, 105, 7, 2122);
-    			add_location(p0, file, 105, 4, 2119);
-    			add_location(p1, file, 107, 8, 2213);
+    			add_location(strong, file, 106, 7, 2163);
+    			add_location(p0, file, 106, 4, 2160);
+    			add_location(p1, file, 108, 8, 2254);
     			attr_dev(div0, "class", "inner__wrapper svelte-14gdztp");
-    			add_location(div0, file, 106, 4, 2176);
+    			add_location(div0, file, 107, 4, 2217);
     			attr_dev(ul, "class", ul_class_value = "" + (null_to_empty(/*results*/ ctx[0].length ? `fade-in` : ``) + " svelte-14gdztp"));
-    			add_location(ul, file, 116, 4, 2513);
+    			add_location(ul, file, 117, 4, 2554);
     			attr_dev(div1, "class", "inner svelte-14gdztp");
-    			add_location(div1, file, 104, 0, 2095);
+    			add_location(div1, file, 105, 0, 2136);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1469,14 +1469,7 @@ var app = (function () {
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
-
-    	const apiURL = ({
-    		"env": {
-    			"isProd": false,
-    			"API_URL": "https://api.quotable.io"
-    		}
-    	})["env"]["API_URL"];
-
+    	const apiURL = __app.env.API_URL;
     	let results = [];
     	let value;
     	let success = false;
