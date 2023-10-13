@@ -3,7 +3,9 @@
     import Button from "./UI/Button.svelte";
     import Results from "./UI/Results.svelte";
 
-    const apiURL = __app["env"]["PUBLIC_API_URL"];
+    const isProduction = __app["env"]["isProd"];
+    const apiURL = isProduction ? process.env.PUBLIC_API_URL : __app["env"]["PUBLIC_API_URL"];
+
     let results = [];
     let value;
     let success = false;
