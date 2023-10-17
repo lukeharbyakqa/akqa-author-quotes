@@ -3,15 +3,16 @@
     import Button from "./UI/Button.svelte";
     import Results from "./UI/Results.svelte";
 
-    const isProduction = __app["env"]["isProd"];
-    const apiURL = isProduction ? process.env.PUBLIC_API_URL : __app["env"]["PUBLIC_API_URL"];
+    const apiURL = __app["env"]["PUBLIC_API_URL"];
 
     let results = [];
     let value;
     let success = false;
+    let networkError;
+    let networkErrorMessage;
     let placeholder = "For example 'Emily Dickinson'. Then hit enter";
 
-    let handleSearch = (event) => {
+    let handleSearchAuthors = (event) => {
         success = false;
         const url = `${apiURL}/search/authors?query=`
         value = event.target.value;
@@ -25,6 +26,13 @@
                 .then((data) => {
                     success = true;
                     results = data.results;
+                    networkError = false;
+                })
+                .catch(err => {
+                    console.warn('Something went wrong.', err);
+                    networkError = true;
+                    networkErrorMessage = err;
+                    handleReset();
                 });
         }
     };
@@ -96,6 +104,10 @@
         color: $colour__red;
     }
 
+    .error {
+        color: $colour__green;
+    }
+
     button {
         transition: all 200ms ease-in;
         font-size: 1rem;
@@ -122,7 +134,7 @@
     <div class="inner__wrapper">
         <p>Enter an author's name</p>
         <TextInput
-            on:keypress={(event) => handleSearch(event)}
+            on:keypress={(event) => handleSearchAuthors(event)}
             on:focus={(event) => handleFocus(event)}
             on:blur={(event) => handleBlur(event)} 
             name={value}
@@ -149,5 +161,8 @@
     </ul>
     {#if value && success && !results.length}
         <p>Sorry no results for {value}</p>
+    {/if}
+    {#if networkError}
+        <p>Sorry there was an error: <span class="error">{networkErrorMessage}</span></p>
     {/if}
 </div>
