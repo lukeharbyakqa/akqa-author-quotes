@@ -11,4 +11,4 @@
     }
 </style>
 
-<input type="text" on:keypress bind:value={name} placeholder={placeholder} on:focus on:blur />
+<input type="text" on:input on:keypress bind:value={name} placeholder={placeholder} on:focus on:blur />

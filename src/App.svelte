@@ -2,40 +2,58 @@
     import TextInput from "./UI/TextInput.svelte";
     import Button from "./UI/Button.svelte";
     import Results from "./UI/Results.svelte";
+    import { site } from './stores/globals';
 
-    const apiURL = __app["env"]["PUBLIC_API_URL"];
+    const apiURL = site.API_URL;
+    const url = `${apiURL}/search/authors?query=`
 
     let results = [];
-    let value;
+    let value = "";
     let success = false;
     let networkError;
     let networkErrorMessage;
     let placeholder = "For example 'Emily Dickinson'. Then hit enter";
+    let minLength = 3;
+
+    const fetchAuthorData = (url, value) => {
+        fetch(`${url}${value}`)
+            .then(data => {
+                return data.json();
+            })
+            .then((data) => {
+                success = true;
+                results = data.results;
+                networkError = false;
+            })
+            .catch(err => {
+                console.warn('Something went wrong.', err);
+                networkError = true;
+                networkErrorMessage = err;
+                handleReset();
+            });
+    }
 
     let handleSearchAuthors = (event) => {
         success = false;
-        const url = `${apiURL}/search/authors?query=`
         value = event.target.value;
-        if (value.length < 3) {
+        if (value.length <= minLength) {
             return
-        } else if (event.which === 13) {
-            fetch(`${url}${value}`)
-                .then(data => {
-                    return data.json();
-                })
-                .then((data) => {
-                    success = true;
-                    results = data.results;
-                    networkError = false;
-                })
-                .catch(err => {
-                    console.warn('Something went wrong.', err);
-                    networkError = true;
-                    networkErrorMessage = err;
-                    handleReset();
-                });
+        }   
+        if (event.which === 13) {
+           fetchAuthorData(url, value);
         }
     };
+
+    let handleInputAuthor = (event) => {
+        value = event.target.value;
+        if (value.length <= minLength) {
+            return
+        }
+    }
+
+    let handleSubmit = () => {
+        fetchAuthorData(url, value);
+    }
 
     let handleReset = (event) => {
         event.target.closest('ul').replaceChildren();
@@ -134,6 +152,7 @@
     <div class="inner__wrapper">
         <p>Enter an author's name</p>
         <TextInput
+            on:input={(event) => handleInputAuthor(event)}
             on:keypress={(event) => handleSearchAuthors(event)}
             on:focus={(event) => handleFocus(event)}
             on:blur={(event) => handleBlur(event)} 
@@ -142,7 +161,8 @@
         />
         <Button
             name={'Submit'}
-            disabled={value && value.length >= 2 ? false : true}
+            disabled={value.length <= minLength ? true : false}
+            on:click={() => handleSubmit()}
         />
     </div>
     <ul class={results.length ? `fade-in` : ``}>
